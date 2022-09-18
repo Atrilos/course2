@@ -8,15 +8,15 @@ import pro.sky.java.course2.examinerservice.exception.QuestionDoesntExistExcepti
 
 import javax.annotation.PostConstruct;
 import java.util.Collection;
-import java.util.HashSet;
 import java.util.Set;
+import java.util.concurrent.ConcurrentHashMap;
 
 @Repository
 public class MathQuestionRepository implements QuestionRepository {
     private final Set<Question> questionSet;
 
     public MathQuestionRepository() {
-        this.questionSet = new HashSet<>();
+        this.questionSet = ConcurrentHashMap.newKeySet();
     }
 
     @Override

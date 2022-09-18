@@ -1,5 +1,6 @@
 package pro.sky.java.course2.examinerservice.service;
 
+import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
 import pro.sky.java.course2.examinerservice.domain.Question;
@@ -9,15 +10,11 @@ import java.util.Collection;
 import java.util.Random;
 
 @Service
+@RequiredArgsConstructor
 public class MathQuestionService implements QuestionService {
+    @Qualifier("mathQuestionRepository")
     private final QuestionRepository questionRepo;
     private final Random rng;
-
-    public MathQuestionService(@Qualifier("mathQuestionRepository") QuestionRepository questionRepo,
-                               Random rng) {
-        this.questionRepo = questionRepo;
-        this.rng = rng;
-    }
 
     @Override
     public Question add(String question, String answer) {

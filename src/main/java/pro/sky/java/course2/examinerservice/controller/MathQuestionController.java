@@ -1,5 +1,6 @@
 package pro.sky.java.course2.examinerservice.controller;
 
+import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -10,13 +11,11 @@ import java.util.Collection;
 
 @RestController
 @RequestMapping("/exam/math")
+@RequiredArgsConstructor
 public class MathQuestionController {
 
+    @Qualifier("mathQuestionService")
     private final QuestionService questionService;
-
-    public MathQuestionController(@Qualifier("mathQuestionService") QuestionService questionService) {
-        this.questionService = questionService;
-    }
 
     @PostMapping("/add")
     public ResponseEntity<Question> addQuestion(@RequestParam("q") String question,
